@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tarefas/css/base.css' %}">
+    <title>{% block title %}Gerenciador de Tarefas{% endblock %}</title>
+</head>
+<div class="body-base">
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+            <li><a href="{% url 'tarefa_list' %}">Lista de Tarefas</a></li>
+            <li><a href="{% url 'criar_tarefa' %}">Criar Tarefa</a></li>
+            <li><a href="{% url 'funcionario_list' %}">Lista de Funcionários</a></li>
+            <li><a href="{% url 'criar_funcionario' %}">Criar Funcionário</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="cont">
+            <p>&copy; 2023 Wesley Gabriel do Carmo Santos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    </body>
+
+</html>

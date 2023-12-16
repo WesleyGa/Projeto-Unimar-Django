@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tarefas/css/modificar.css' %}">
+    <title>Modificar Funcionário</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gerenciador de Funcionários</h1>
+    </header>
+
+    <div class="container">
+        <h2>Modificar Funcionário</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar Modificações</button>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock %}

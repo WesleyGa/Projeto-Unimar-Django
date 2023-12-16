@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tarefas/css/buscar_funcionarios.css' %}">
+    <title>Pesquisar Funcionários</title>
+</head>
+
+<body>
+    <header>
+        <h2>Pesquisar Funcionários</h2>
+    </header>
+
+    <div class="container">
+        <form method="get" action="{% url 'buscar_funcionarios' %}" class="buscar-form">
+            <input type="text" name="q" placeholder="Pesquisar por nome ou cargo...">
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        {% if query %}
+        <h3>Resultados da pesquisa para "{{ query }}"</h3>
+        {% endif %}
+
+        <ul>
+            {% for funcionario in resultados %}
+            <li><a href="{% url 'detalhes_funcionario' funcionario.id %}">{{ funcionario.nome }}</a> - {{ funcionario.cargo }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tarefas/css/funcionario_list.css' %}">
+    <title>Lista de Funcionários</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>Gerenciador de Funcionários</h1>
+    </header>
+
+    <div class="container">
+        <h2>Lista de Funcionários</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cargo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario in funcionarios %}
+                <tr>
+                    <td>{{ funcionario.id }}</td>
+                    <td>{{ funcionario.nome }}</td>
+                    <td>{{ funcionario.cargo }}</td>
+                    <td class="button-group">
+                        <form method="post" action="{% url 'remover_funcionario' funcionario.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="funcionario_id" value="{{ funcionario.id }}">
+                            <button type="submit" class="remove-button">Remover</button>
+                        </form>
+                        <a href="{% url 'modificar_funcionario' funcionario.id %}" class="modify-link">Modificar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+{% endblock %}

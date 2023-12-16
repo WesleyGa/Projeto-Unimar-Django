@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tarefas/css/detalhes_funcionario.css' %}">
+
+    <title>Detalhes do Funcionário</title>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Detalhes do Funcionário</h2>
+        <p>Nome: {{ funcionario.nome }}</p>
+        <p>Cargo: {{ funcionario.cargo }}</p>
+
+        <h3>Tarefas Atribuídas</h3>
+        <ul>
+            {% for tarefa in tarefas %}
+            <li>{{ tarefa.titulo }} - {{ tarefa.descricao }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
+{% endblock %}

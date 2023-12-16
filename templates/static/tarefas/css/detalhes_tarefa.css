@@ -1,0 +1,55 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.details-header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+.details-content {
+    margin-top: 20px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.concluida {
+    color: green;
+}
+
+.nao-concluida {
+    color: red;
+}
+
+.edit-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-link a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-link a:hover {
+    background-color: #45a049;
+}

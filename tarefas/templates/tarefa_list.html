@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'tarefas/css/tarefa_list.css' %}">
+  <title>Lista de Tarefas</title>
+</head>
+
+<body>
+  <header>
+    <h1>Lista de Tarefas</h1>
+  </header>
+
+  <div class="container">
+    <h2>Lista de Tarefas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Atribuída a</th>
+          <th>Concluída</th>
+       
+        </tr>
+      </thead>
+      <tbody>
+        {% for tarefa in tarefas %}
+        <tr>
+          <td>{{ tarefa.id }}</td>
+          <td>{{ tarefa.titulo }}</td>
+          <td>{{ tarefa.descricao }}</td>
+          <td>{{ tarefa.atribuida_a.nome }}</td>
+          <td class="concluida-{{ tarefa.concluida }}">
+            <p>{{ tarefa.get_concluida_display }}</p>
+          </td>
+          <td>
+            <a href="{% url 'editar_tarefa' tarefa.id %}" class="editar-botao">Editar</a>
+            <td>
+              <form method="post" action="{% url 'remover_tarefa' tarefa.id %}">
+                  {% csrf_token %}
+                  <input type="submit" class="editar-botao" value="Remover">
+              </form>
+          </td>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+{% endblock %}
